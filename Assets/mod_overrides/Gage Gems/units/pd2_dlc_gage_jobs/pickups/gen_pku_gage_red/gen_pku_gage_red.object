@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<dynamic_object>
+    <diesel materials="units/pd2_dlc_gage_jobs/pickups/gen_pku_gage_red/gen_pku_gage_red" orientation_object="rp_gen_pku_gage_green" />
+    <bodies>
+        <body name="static_body" template="static" enabled="true" >
+            <object name="rp_gen_pku_gage_green"/>
+            <object collision_type="box" enabled="true" name="c_box" padding="-2.5"/>
+        </body>
+    </bodies>
+
+    <graphics>
+        <object enabled="false" name="g_green"/>
+		<object enabled="true" name="g_mullplan"/>
+        <object enabled="true" name="g_sapphire_pickup"/>
+		<object enabled="true" name="g_sapphire_inside"/>
+		<object enabled="true" name="g_sapphire_shimmer"/>
+		<object enabled="true" name="g_sapphire_glow"/>					
+    </graphics>
+	
+</dynamic_object>

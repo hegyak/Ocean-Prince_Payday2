@@ -1,0 +1,327 @@
+{
+	"menu_id" : "dcc",
+	"parent_menu_id" : "blt_options",
+	"title" : "menu_dcc",
+	"description" : "menu_dcc_desc",
+	"back_callback" : "dcc_save",
+	"localized" :  true,
+	"items" : [
+		{
+		    "type" : "toggle",
+		    "id" : "tg_crosshair_visible",
+		    "title" : "loc_bool_crosshair_visible",
+		    "description" : "loc_bool_crosshair_visible_desc",
+		    "callback" : "callbackdcc_toggle_cvis",
+		    "value" : "tg_crosshair_visible",
+		    "default_value" : true
+		},
+		{
+		    "type" : "toggle",
+		    "id" : "tg_coloring",
+		    "title" : "loc_bool_crosshair_colored",
+		    "description" : "loc_bool_crosshair_colored_desc",
+		    "callback" : "callbackdcc_toggle_colr",
+		    "value" : "tg_coloring",
+		    "default_value" : true
+		},
+		{
+		    "type" : "multiple_choice",
+		    "id" : "item_top",
+		    "title" : "loc_item_top",
+		    "description" : "loc_item_top_desc",
+		    "callback" : "callbackdcc_item_top",
+		    "items" : [
+					"none",
+					"current_clip",
+					"offhand_clip",
+					"total_ammo",
+					"armor",
+					"health",
+					"scanner"
+		    ],
+		    "value" : "item_top",
+		    "default_value" : 1
+		},
+		{
+		    "type" : "multiple_choice",
+		    "id" : "item_left",
+		    "title" : "loc_item_left",
+		    "description" : "loc_item_left_desc",
+		    "callback" : "callbackdcc_item_left",
+		    "items" : [
+					"none",
+					"current_clip",
+					"offhand_clip",
+					"total_ammo",
+					"armor",
+					"health",
+					"scanner"
+		    ],
+		    "value" : "item_left",
+		    "default_value" : 1
+		},
+		{
+		    "type" : "multiple_choice",
+		    "id" : "item_right",
+		    "title" : "loc_item_right",
+		    "description" : "loc_item_right_desc",
+		    "callback" : "callbackdcc_item_right",
+		    "items" : [
+					"none",
+					"current_clip",
+					"offhand_clip",
+					"total_ammo",
+					"armor",
+					"health",
+					"scanner"
+		    ],
+		    "value" : "item_right",
+		    "default_value" : 1
+		},
+		{
+		    "type" : "multiple_choice",
+		    "id" : "item_bottom",
+		    "title" : "loc_item_bottom",
+		    "description" : "loc_item_bottom_desc",
+		    "callback" : "callbackdcc_item_bottom",
+		    "items" : [
+					"none",
+					"current_clip",
+					"offhand_clip",
+					"total_ammo",
+					"armor",
+					"health",
+					"scanner"
+		    ],
+		    "value" : "item_bottom",
+		    "default_value" : 1
+		},
+		{
+				"type" : "multiple_choice",
+				"id" : "mode_ironsights",
+				"title" : "loc_bool_ironsight_crosshair",
+				"description" : "loc_bool_ironsight_crosshair_desc",
+				"callback" : "callbackdcc_mode_irns",
+				"items" : [
+					"off",
+					"classic",
+					"toponly",
+					"rightonly",
+					"leftonly",
+					"bottomonly",
+					"full"
+				],
+				"value" : "mode_ironsights",
+				"default_value" : 2
+		},
+		{
+		    "type" : "toggle",
+		    "id" : "tg_adscross_lmg_only",
+		    "title" : "loc_bool_adscross_only_lmg",
+		    "description" : "loc_bool_adscross_only_lmg_desc",
+		    "callback" : "callbackdcc_toggle_iclo",
+		    "value" : "tg_adscross_lmg_only",
+		    "default_value" : false
+		},
+		{
+		    "type" : "slider",
+		    "id" : "sl_dynamic",
+		    "title" : "loc_value_crosshair_dynamic",
+		    "description" : "loc_value_crosshair_dynamic_desc",
+		    "callback" : "callbackdcc_value_sldn",
+		    "value" : "sl_dynamic",
+		    "default_value" : 0.5,
+		    "max" : 3,
+		    "min" : 0,
+		    "step" : 0.1
+		},
+		{
+		    "type" : "slider",
+		    "id" : "sl_scale_l",
+		    "title" : "loc_value_crosshair_length",
+		    "description" : "loc_value_crosshair_length_desc",
+		    "callback" : "callbackdcc_value_sl_l",
+		    "value" : "sl_cl",
+		    "default_value" : 24,
+		    "max" : 40,
+		    "min" : 1,
+		    "step" : 0.5
+		},
+		{
+		    "type" : "slider",
+		    "id" : "sl_scale_w",
+		    "title" : "loc_value_crosshair_width",
+		    "description" : "loc_value_crosshair_width_desc",
+		    "callback" : "callbackdcc_value_sl_w",
+		    "value" : "sl_cw",
+		    "default_value" : 4,
+		    "max" : 20,
+		    "min" : 1,
+		    "step" : 0.1
+		},
+		{
+			"type" : "divider",
+			"size" : 32
+		},
+		{
+		    "type" : "multiple_choice",
+		    "id" : "color_health_full",
+		    "title" : "loc_color_health_full",
+		    "description" : "loc_color_health_full_desc",
+		    "callback" : "callbackdcc_color_hf",
+		    "items" : [
+				"cyan",
+				"purple",
+				"red",
+				"black",
+				"yellow",
+				"white",
+				"blue",
+				"green", "orange", "darkred", "darkblue", "darkgreen", "grey"
+		    ],
+		    "value" : "color_health_full",
+		    "default_value" : 6
+		},
+		{
+		    "type" : "multiple_choice",
+		    "id" : "color_health_empty",
+		    "title" : "loc_color_health_empty",
+		    "description" : "loc_color_health_empty_desc",
+		    "callback" : "callbackdcc_color_he",
+		    "items" : [
+				"cyan",
+				"purple",
+				"red",
+				"black",
+				"yellow",
+				"white",
+				"blue",
+				"green", "orange", "darkred", "darkblue", "darkgreen", "grey"
+		    ],
+		    "value" : "color_health_empty",
+		    "default_value" : 3
+		},
+		{
+			"type" : "divider",
+			"size" : 32
+		},
+		{
+		    "type" : "multiple_choice",
+		    "id" : "color_armor_full",
+		    "title" : "loc_color_armor_full",
+		    "description" : "loc_color_armor_full_desc",
+		    "callback" : "callbackdcc_color_af",
+		    "items" : [
+				"cyan",
+				"purple",
+				"red",
+				"black",
+				"yellow",
+				"white",
+				"blue",
+				"green", "orange", "darkred", "darkblue", "darkgreen", "grey"
+		    ],
+		    "value" : "color_armor_full",
+		    "default_value" : 8
+		},
+		{
+		    "type" : "multiple_choice",
+		    "id" : "color_armor_empty",
+		    "title" : "loc_color_armor_empty",
+		    "description" : "loc_color_armor_empty_desc",
+		    "callback" : "callbackdcc_color_ae",
+		    "items" : [
+				"cyan",
+				"purple",
+				"red",
+				"black",
+				"yellow",
+				"white",
+				"blue",
+				"green", "orange", "darkred", "darkblue", "darkgreen", "grey"
+		    ],
+		    "value" : "color_armor_empty",
+		    "default_value" : 3
+		},
+		{
+			"type" : "divider",
+			"size" : 32
+		},
+		{
+		    "type" : "multiple_choice",
+		    "id" : "color_ammo_full",
+		    "title" : "loc_color_ammo_full",
+		    "description" : "loc_color_ammo_full_desc",
+		    "callback" : "callbackdcc_color_mf",
+		    "items" : [
+				"cyan",
+				"purple",
+				"red",
+				"black",
+				"yellow",
+				"white",
+				"blue",
+				"green", "orange", "darkred", "darkblue", "darkgreen", "grey"
+		    ],
+		    "value" : "color_ammo_full",
+		    "default_value" : 6
+		},
+		{
+		    "type" : "multiple_choice",
+		    "id" : "color_ammo_half",
+		    "title" : "loc_color_ammo_half",
+		    "description" : "loc_color_ammo_half_desc",
+		    "callback" : "callbackdcc_color_mh",
+		    "items" : [
+				"cyan",
+				"purple",
+				"red",
+				"black",
+				"yellow",
+				"white",
+				"blue",
+				"green", "orange", "darkred", "darkblue", "darkgreen", "grey"
+		    ],
+		    "value" : "color_ammo_half",
+		    "default_value" : 9
+		},
+		{
+		    "type" : "multiple_choice",
+		    "id" : "color_ammo_empty",
+		    "title" : "loc_color_ammo_empty",
+		    "description" : "loc_color_ammo_empty_desc",
+		    "callback" : "callbackdcc_color_me",
+		    "items" : [
+				"cyan",
+				"purple",
+				"red",
+				"black",
+				"yellow",
+				"white",
+				"blue",
+				"green", "orange", "darkred", "darkblue", "darkgreen", "grey"
+		    ],
+		    "value" : "color_ammo_empty",
+		    "default_value" : 3
+		},
+		{
+		    "type" : "multiple_choice",
+		    "id" : "color_ammo_reload",
+		    "title" : "loc_color_ammo_reload",
+		    "description" : "loc_color_ammo_reload_desc",
+		    "callback" : "callbackdcc_color_mr",
+		    "items" : [
+				"cyan",
+				"purple",
+				"red",
+				"black",
+				"yellow",
+				"white",
+				"blue",
+				"green", "orange", "darkred", "darkblue", "darkgreen", "grey"
+		    ],
+		    "value" : "color_ammo_reload",
+		    "default_value" : 10
+		}
+	]
+}

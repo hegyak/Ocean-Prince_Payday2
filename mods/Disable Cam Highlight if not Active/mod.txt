@@ -1,0 +1,13 @@
+{
+	"name": "Disable Cam Highlight if not Active",
+	"description": "Disables highlighting the camera in stealth if you killed the cameras room guard. Allows you to highlight other items rather than highlighting cameras.",
+	"author": "abkarino",
+	"version": "1.0",
+	"blt_version": 2,
+	"hooks" : [
+		{
+			"hook_id" : "lib/units/beings/player/states/playerstandard",
+			"script_path" : "playerstandard.lua"
+		}
+	]
+}

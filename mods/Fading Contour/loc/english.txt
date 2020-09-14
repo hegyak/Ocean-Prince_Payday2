@@ -1,0 +1,16 @@
+{
+	"fc_options_menu_title" : "Fading Contour",
+	"fc_options_menu_desc"  : "Change the fading out settings",
+
+	"fc_options_fade_from_title" : "Fading out period",
+	"fc_options_fade_from_desc"  : "When the fading out process starts, relatively to the marking duration",
+
+	"fc_options_fade_method_title" : "Fading out speed",
+	"fc_options_fade_method_desc"  : "",
+
+	"fc_options_multi_fade_method_a" : "Linear",
+	"fc_options_multi_fade_method_b" : "Square root",
+
+	"fc_options_test_contour_title" : "Test how contour fading will render",
+	"fc_options_test_contour_desc" : "This feature works only when called from main menu."
+}

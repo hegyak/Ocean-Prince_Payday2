@@ -1,0 +1,1 @@
+{"GS":0.75,"toggle_chat_message_value":true,"toggle_show_waypoint_value":true,"RH":0,"BV":0}

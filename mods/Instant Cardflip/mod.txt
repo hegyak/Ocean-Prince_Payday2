@@ -1,0 +1,13 @@
+{
+	"name" : "Instant Card Flip",
+	"description" : "Instantly flips your selected card and shows your loot.",
+	"author" : "Takku",
+	"version" : "3",
+	"priority" : 0,
+	"hooks" : [
+		{
+			"hook_id" : "lib/managers/hud/hudlootscreen",
+			"script_path" : "icf.lua"
+		}
+	]
+}

@@ -1,0 +1,11 @@
+<table>
+    <unit path="units/pd2_dlc_peta/goater/realsi" force="true"/>
+    <object path="units/pd2_dlc_peta/goater/realsi" force="true"/>
+    <model path="units/pd2_dlc_peta/goater/realsi" force="true"/>
+    <texture path="units/pd2_dlc_peta/goater/realsi_df" force="true"/>
+    <texture path="units/pd2_dlc_peta/goater/realsi_nm" force="true"/>
+    <material_config path="units/pd2_dlc_peta/goater/realsi" force="true"/>
+    <cooked_physics path="units/pd2_dlc_peta/goater/realsi" force="true"/>
+
+    <texture path="units/pd2_dlc_peta/goater/npc_acc_ralsei_df" force="true"/>
+</table>

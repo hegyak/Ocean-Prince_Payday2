@@ -1,0 +1,7 @@
+<table name="Ralsei Goat" color="Color(0, 1, 0.5)">
+	<AssetUpdates id="" version="2.0" provider="modworkshop"/>
+
+	<Hooks directory="hooks">
+		<hook file="scriptunitdata.lua" source_file="lib/units/scriptunitdata"/>
+	</Hooks>
+</table>

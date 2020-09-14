@@ -1,0 +1,23 @@
+{
+ "name" : "All Paintings in the Gallery",
+ "description" : "This restores unused paintings to the Art Gallery.",
+ "author" : "Somnus 'Rhynne' Novus",
+ "contact" : "[email protected]",
+ "version" : "1",
+ "blt_version" : 2,
+ "priority" : 45,
+
+ "hooks" : [
+  {
+	"hook_id": "core/lib/managers/coresequencemanager",
+   "script_path": "PaintingsCore.lua"
+  }
+ ],
+ "libraries" : [
+        {
+            "display_name" : "BeardLib",
+            "identifier" : "beardlib",
+            "optional" : "false"
+        }
+    ]
+}

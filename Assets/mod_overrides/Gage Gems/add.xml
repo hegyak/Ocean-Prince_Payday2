@@ -1,0 +1,16 @@
+<table>
+	<object path="units/pd2_dlc_gage_jobs/pickups/gen_pku_gage_blue/gen_pku_gage_blue" force="true"/>
+	<object path="units/pd2_dlc_gage_jobs/pickups/gen_pku_gage_green/gen_pku_gage_green" force="true"/>
+	<object path="units/pd2_dlc_gage_jobs/pickups/gen_pku_gage_purple/gen_pku_gage_purple" force="true"/>
+	<object path="units/pd2_dlc_gage_jobs/pickups/gen_pku_gage_red/gen_pku_gage_red" force="true"/>
+	<object path="units/pd2_dlc_gage_jobs/pickups/gen_pku_gage_yellow/gen_pku_gage_yellow" force="true"/>
+
+	<texture path="units/pd2_dlc_gage_jobs/pickups/gen_pku_gage_green/dah_prop_green_back_df"/>
+	<texture path="units/pd2_dlc_gage_jobs/pickups/gen_pku_gage_green/dah_prop_green_df"/>		
+	<texture path="units/pd2_dlc_gage_jobs/pickups/gen_pku_gage_green/dah_prop_purple_back_df"/>
+	<texture path="units/pd2_dlc_gage_jobs/pickups/gen_pku_gage_green/dah_prop_purple_df"/>			
+	<texture path="units/pd2_dlc_gage_jobs/pickups/gen_pku_gage_green/dah_prop_red_back_df"/>
+	<texture path="units/pd2_dlc_gage_jobs/pickups/gen_pku_gage_green/dah_prop_red_df"/>			
+	<texture path="units/pd2_dlc_gage_jobs/pickups/gen_pku_gage_green/dah_prop_yellow_back_df"/>
+	<texture path="units/pd2_dlc_gage_jobs/pickups/gen_pku_gage_green/dah_prop_yellow_df"/>		
+</table>

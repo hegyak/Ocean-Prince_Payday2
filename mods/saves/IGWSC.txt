@@ -1,0 +1,1 @@
+{"join_text_value":"JOINING","color":{"ready":{"r":102,"b":102,"g":255},"unready":{"r":255,"b":51,"g":51},"join":{"r":153,"b":255,"g":255},"dropin":{"r":255,"b":153,"g":255}},"ready_text_value":"READY","unready_text_value":"NOT READY","dropin_text_value":"LOADING"}

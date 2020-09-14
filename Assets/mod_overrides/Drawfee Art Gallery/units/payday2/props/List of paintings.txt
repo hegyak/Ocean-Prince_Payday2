@@ -1,0 +1,21 @@
+Used paintings in the base game:
+================================
+- large_annabelle 1-8
+- large_ben_qwek 1-16
+- medium_ben_qwek 1-4
+- small_annabelle 1
+- small_ben_qwek 1
+
+Unused paintings in the base game:
+==================================
+- large_darius 1-6
+- large_ray 1-11
+- medium_darius 1-13
+- medium_ray 1-7
+- small_ben_qwek 2-11
+- small_ray 1-6
+
+To restore the unused paintings, you will
+need to install this mod by Martini:
+
+http://forums.lastbullet.net/mydownloads.php?action=view_down&did=15928
