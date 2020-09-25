@@ -1,0 +1,17 @@
+{
+	"name" : "Music Control",
+	"description" : "Adds music player controls and additional playlists.",
+	"author" : "Spiltmilk and FishTaco\n    French Translation: Mr.PlayYou\n    German Translation: FuRiouS\n    Korean Translation: payday2kor\n    Russian Translation: Kowa4ui_korm\n    Turkish Translation: Sidknee",
+	"blt_version": 2,
+	"version" : "5",
+	"updates": [
+        {
+            "identifier": "mcontrolupdated",
+            "host": {
+				"meta": "https://raw.githubusercontent.com/steam-test1/PD2Updates/master/updates_metas/meta_mcontrolupdated.json"
+			}
+        }
+    ],
+	"hooks" :
+	[{"hook_id" : "lib/managers/menumanager", "script_path" : "lua/music.lua"}, {"hook_id" : "lib/managers/musicmanager", "script_path" : "lua/music.lua"}, {"hook_id" : "lib/tweak_data/levelstweakdata", "script_path" : "lua/music.lua"}]
+}

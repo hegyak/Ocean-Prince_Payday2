@@ -12,6 +12,6 @@ local _hefty={
 	}
 
 for name, quantity in pairs(_hefty) do
-	tweak_data.equipments.specials[name].quantity=3
+	tweak_data.equipments.specials[name].quantity=1
 	tweak_data.equipments.specials[name].max_quantity=quantity
 	end
