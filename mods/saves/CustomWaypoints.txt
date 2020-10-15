@@ -1,1 +1,0 @@
-{"show_distance":true,"always_show_others_waypoints":true,"always_show_my_waypoint":true,"include_hostages_in_points_of_interest":true,"include_lootbags_in_points_of_interest":true}

@@ -1,10 +1,11 @@
-_G.MethHelperUpdated = MethHelperUpdated or {}
-
+-- ****************** HEY, LISTEN!!!! ******************
 --If you're here because you want to change the mod to silent mode, you are in the wrong place.
 --You should use the Mod Options menu to change this mod's settings. 
 --If you do not have a Mod Options menu, you must upgrade from BLT to SuperBLT: https://superblt.znix.xyz/
+
+_G.MethHelperUpdated = MethHelperUpdated or {}
 MethHelperUpdated.settings = {
-	enabled = true, --master enable
+	enabled = true,
 	ingred_chatmode = 2,
 	ingred_hintmode = true,
 	ingred_repeat = false,
@@ -13,11 +14,30 @@ MethHelperUpdated.settings = {
 	done_chatmode = 1,
 	done_hintmode = false,
 	fail_chatmode = 3,
-	fail_hintmode = true
+	fail_hintmode = true,
+	language_name = "en.txt",
+	_language_index = 2 --don't bother changing this, it doesn't do anything except VISUALLY change which language is selected in the multiple choice menu
 }
-MethHelperUpdated._last_ingredient = "Fish-shaped volatile organic compounds and sediment-shaped sediment"
+
+MethHelperUpdated.populated_languages_menu = false
+MethHelperUpdated.languages = {} --populated later
+
+MethHelperUpdated.path = ModPath
+MethHelperUpdated.loc_path = MethHelperUpdated.path .. "loc/"
+MethHelperUpdated.save_path = SavePath .. "methhelperupdated.txt"
+
+MethHelperUpdated._last_ingredient = "Fish-shaped volatile organic compounds and sediment-shaped sediment" --placeholder
+
 function MethHelperUpdated:IsEnabled()
 	return self.settings.enabled
+end
+
+function MethHelperUpdated:GetLanguage()
+	return self.settings.language_name
+end
+
+function MethHelperUpdated:DebugEnabled() 
+	return false
 end
 
 function MethHelperUpdated:ShouldRepeatIngredients()
@@ -45,9 +65,6 @@ function MethHelperUpdated:LocalizeLine(id)
 	return managers.localization:text("methhelperupdated_" .. tostring(id))
 end
 
-MethHelperUpdated.path = ModPath
-MethHelperUpdated.save_path = SavePath .. "methhelperupdated.txt"
-
 function MethHelperUpdated:Load()
 	local file = io.open(self.save_path, "r")
 	if (file) then
@@ -67,26 +84,101 @@ function MethHelperUpdated:Save()
 	end
 end
 
-
-Hooks:Add("LocalizationManagerPostInit", "LocalizationManagerPostInit_MethHelperUpdated", function(loc)
-	local p = MethHelperUpdated.path .. "loc/"
-	for _, filename in pairs(file.GetFiles(p)) do
-		local str = filename:match('^(.*).txt$')
-		if str and Idstring(str) and Idstring(str):key() == SystemInfo:language():key() then
-			loc:load_localization_file(p .. filename)
-			return
+function MethHelperUpdated:LoadLanguageFiles()
+	for i,filename in ipairs(SystemFS:list(self.loc_path)) do 
+		local file = io.open(self.loc_path .. filename, "r")
+		if file then
+			local localized_strings = json.decode(file:read("*all"))
+			local lang_name = localized_strings and (type(localized_strings) == "table") and localized_strings.methhelperupdated_language_name
+			if lang_name then 
+				self.languages[filename] = {
+					index = i,
+					localized_language_name = lang_name,
+					localization = localized_strings
+				}
+			end
+		
+		end
+		if filename == self:GetLanguage() then 
+			self.settings._language_index = i
+			-- language order is not guaranteed- particularly if a new language is added which interferes with the alphabetical order- which is why
+			-- the filename is saved and not the index number of the language,
+			-- and the index number is "generated" on load instead of being written here in settings
 		end
 	end
-	loc:load_localization_file( p .. "english.txt")
-end)
+end
+
+function MethHelperUpdated:LoadLanguage(localizationmanager,user_language)
+	localizationmanager = localizationmanager or managers.localization
+	if localizationmanager then 
+		user_language = user_language or self:GetLanguage()
+		local language_data = user_language and self.languages[user_language]
+		local ization = language_data and language_data.localization  --get it? local-ization? hahahahaha please clap
+		if ization then 
+			if self:DebugEnabled() then 
+				log("MethHelperUpdated: Loading localization for " .. user_language)
+			end
+			self.settings._language_index = language_data.index
+			localizationmanager:add_localized_strings(ization)
+		end
+	elseif self:DebugEnabled() then 
+		log("MethHelperUpdated: ERROR! Failed to load localization manager!")
+	end
+end
+
+MethHelperUpdated:Load() --load settings; this should be before menu creation 
+MethHelperUpdated:LoadLanguageFiles()
+
+Hooks:Add("LocalizationManagerPostInit", "LocalizationManagerPostInit_MethHelperUpdated",
+	callback(MethHelperUpdated,MethHelperUpdated,"LoadLanguage")
+)
 
 Hooks:Add( "MenuManagerInitialize", "MenuManagerInitialize_MethHelperUpdated", function(menu_manager)
-
+	
 	MenuCallbackHandler.callback_methhelperupdated_toggle_enabled = function(self,item)
 		local value = item:value() == "on"
 		MethHelperUpdated:Toggle_Enabled(value)
 		MethHelperUpdated:Save()
 	end
+
+	MenuCallbackHandler.callback_methhelperupdated_refocus = function(self)
+		if MethHelperUpdated.populated_languages_menu then
+			return
+		end
+		
+		local menu_item = MenuHelper:GetMenu("methhelperupdated_options") or {_items = {}}
+		for _,item in pairs(menu_item._items) do 
+			if item._parameters and item._parameters.name == "methhelperupdated_select_language" then 
+				for lang_name,lang_data in pairs(MethHelperUpdated.languages) do 
+					item:add_option(
+						CoreMenuItemOption.ItemOption:new(
+							{
+								_meta = "option",
+								text_id = lang_data.localized_language_name,
+								value = lang_data.index,
+								localize = false
+							}
+						)
+					)
+				end
+				item:set_value(MethHelperUpdated.settings._language_index)
+				break
+			end
+		end	
+		MethHelperUpdated.populated_languages_menu = true
+	end
+	
+	MenuCallbackHandler.callback_methhelperupdated_select_language = function(self,item) --populate multiplechoice with profile options
+		for lang_name,lang_data in pairs(MethHelperUpdated.languages) do 
+			if lang_data.index == tonumber(item:value()) then 
+				MethHelperUpdated.settings.language_name = lang_name
+				MethHelperUpdated:Save()
+				MethHelperUpdated:LoadLanguage(nil,lang_name)
+				return
+			end
+		end
+	end	
+	
 	MenuCallbackHandler.callback_methhelperupdated_keybind_toggle = function(self)
 		local value = MethHelperUpdated:Toggle_Enabled()
 		if managers.hud then 
@@ -152,7 +244,6 @@ Hooks:Add( "MenuManagerInitialize", "MenuManagerInitialize_MethHelperUpdated", f
 	MenuCallbackHandler.callback_methhelperupdated_close = function(self)
 --		MethHelperUpdated:Save() --redundant since the mod saves after any setting change
 	end
-	MethHelperUpdated:Load()
 	MenuHelper:LoadFromJsonFile(MethHelperUpdated.path .. "menu/options.txt", MethHelperUpdated, MethHelperUpdated.settings)
 
 end)

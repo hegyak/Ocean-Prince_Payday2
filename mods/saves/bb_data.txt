@@ -1,1 +1,0 @@
-{"dom":true,"combat":true,"reflex":true,"health":3,"doc":true,"maskup":true,"dodge":5,"equip":true,"ammo":false,"biglob":true,"conc":true,"move":2}

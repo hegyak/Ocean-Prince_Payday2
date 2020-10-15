@@ -86,6 +86,4 @@ end)
 		13 says "maybe we'll get it right next time" (failure/methlab blown?)
 		14 says "not bad, maybe next time we can get more (adequate amount but not extra)
 		15 says "well done, this will bring a nice amount of change!" (large amount gotten)
-toggle_ingredients_chat = true
-ingredient_said = false
 --]]

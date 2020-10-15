@@ -1,0 +1,13 @@
+{
+	"name": "Mute Objective Updated Sound",
+	"description": "Mutes the annoying PSSSHHHBEOWWWOWWWOWWW sound that likes to play over and over and over when you secure a lot of bags.",
+	"author": "9600bauds",
+	"contact": "Steam via id/9600bauds",
+	"version": "1.0",
+	"hooks": [
+		{
+			"hook_id": "lib/managers/hudmanager",
+			"script_path": "hudmanager.lua"
+		}
+	]
+}

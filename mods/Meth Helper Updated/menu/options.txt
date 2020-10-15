@@ -3,6 +3,7 @@
 	"parent_menu_id" : "blt_options",
 	"title" : "methhelperupdated_title",
 	"back_callback" : "callback_methhelperupdated_close",
+	"focus_changed_callback" : "callback_methhelperupdated_refocus",
 	"items" : [
 		{
 			"type" : "toggle",
@@ -11,6 +12,15 @@
 			"description" : "methhelperupdated_toggle_enabled_desc",
 			"callback" : "callback_methhelperupdated_toggle_enabled",
 			"value" : "enabled"
+		},
+		{
+			"type" : "multiple_choice",
+			"id" : "methhelperupdated_select_language",
+			"title" : "methhelperupdated_select_language_title",
+			"description" : "methhelperupdated_select_language_desc",
+			"callback" : "callback_methhelperupdated_select_language",
+			"items" : [],
+			"value" : "_language_index"
 		},
 		{
 			"type" : "keybind",

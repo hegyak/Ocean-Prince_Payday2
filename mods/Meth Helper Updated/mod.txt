@@ -3,9 +3,9 @@
 	"description" : "Updated version of Meth Helper.\nAdds a BLT mod options menu for silent/private message cooking,\nand support for Locke's cooking lines in U198.",
 	"author" : "Offyerrocker",
 	"contact" : "Discord: Offyerrocker#3878",
-	"version" : "2.2",
+	"version" : "2.41",
 	"blt_version" : 2,
-	"image" : "mhu.png"
+	"image" : "mhu.png",
 	"color" : "255 255 0",
 	"hooks" : [
 		{
@@ -15,11 +15,6 @@
 		{
 			"hook_id" : "lib/managers/dialogmanager"
 			"script_path" : "lua/dialogmanager.lua"
-		}
-	],
-	"updates" : [
-		{
-			"identifier" : "notevenonce"
 		}
 	]
 }
