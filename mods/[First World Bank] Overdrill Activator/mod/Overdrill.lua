@@ -8,7 +8,7 @@ _toggleOverdrill = not _toggleOverdrill
 if _toggleOverdrill then
 	if managers.job:current_level_id() == "red2" and managers.groupai:state():whisper_mode() and isHost() then
 		managers.chat:_receive_message(1, "Overdrill Activator", "Can not be activated during stealth!", Color.yellow)
-	elseif managers.job:current_level_id() == "red2" and not managers.groupai:state():whisper_mode() and Global.game_settings.difficulty == "overkill_290" and isHost() then
+	elseif managers.job:current_level_id() == "red2" and Global.game_settings.difficulty == "overkill_290" and isHost() then
 		for _, script in pairs(managers.mission:scripts()) do
 			for id, element in pairs(script:elements()) do
 				for _, trigger in pairs(element:values().trigger_list or {}) do
@@ -20,7 +20,7 @@ if _toggleOverdrill then
 				end
 			end
 		end
-	elseif managers.job:current_level_id() == "red2" and not managers.groupai:state():whisper_mode() and Global.game_settings.difficulty == "sm_wish" and isHost() then
+	elseif managers.job:current_level_id() == "red2" and Global.game_settings.difficulty == "sm_wish" and isHost() then
 		for _, script in pairs(managers.mission:scripts()) do
 			for id, element in pairs(script:elements()) do
 				for _, trigger in pairs(element:values().trigger_list or {}) do

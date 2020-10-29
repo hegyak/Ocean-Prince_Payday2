@@ -8,7 +8,7 @@
 	"priority" : 10,
 	"keybinds" : [
 		{
-			"keybind_id": "Overdrill",
+            "keybind_id": "Overdrill",
             "name": "Overdrill",
             "description": "Allows the Overdrill to be placed",
             "script_path": "mod/Overdrill.lua",
