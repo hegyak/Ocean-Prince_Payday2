@@ -59,6 +59,11 @@ Hooks:PostHook(LevelsTweakData, "init", "F_"..Idstring("PostHook:init:LevelsTwea
     ✅  Scarface Mansion        - friend
     ✅  Panic Room              - flat
     ✅  Prison Nightmare        - help
+    ✅  Safe House Nightmare    - haunted
+    ✅  Brooklyn 10-10          - spa
+    ✅  The Yacht Heist         - fish
+    ✅  Stealing XMAS           - moon
+    ✅  Heat Street             - run                       // This map is so annoyingly big
 
     ]]
 
@@ -2003,6 +2008,141 @@ Hooks:PostHook(LevelsTweakData, "init", "F_"..Idstring("PostHook:init:LevelsTwea
             rot = Rotation(270, 0, 0),
             pos = Vector3(-3864.17, -2439.26, 271.629),
             start = 50
+        }
+    }
+
+    self.haunted.cine_data = {
+        timeline = {
+            [0] = {
+                path = {Vector3(-1417.37, 2989.58, -210.419),Rotation(-6.49905, -0.200294, -0)},
+                easing = "easeOutQuad",
+                fov = 60
+            },
+            [100] = {
+                path = {Vector3(-1445.85, 3539.05, -212.316),Rotation(-6.49905, -0.200294, -0)},
+                fov = 60
+            }
+        },
+        length = 15,
+        __original = true,
+        hideblackbars = false,
+        hologram = {
+            size = 200,
+            rot = Rotation(270, 0, 0),
+            pos = Vector3(-1472.49, 3662.45, -192.387),
+            start = 40
+        }
+    }
+
+    self.spa.cine_data = {
+        timeline = {
+            [0] = {
+                path = {Vector3(8222.7, -225.159, 969.633),Rotation(64.2025, 59.9997, -0)},
+                easing = "easeOutQuad",
+                fov = 60
+            },
+            [100] = {
+                path = {Vector3(8331.81, -378.097, 285.33),Rotation(79.2545, 22.1998, -3.41509e-006)},
+                fov = 60
+            }
+        },
+        length = 18,
+        __original = true,
+        hideblackbars = false,
+        hologram = {
+            size = 400,
+            rot = Rotation(0, 0, 0),
+            pos = Vector3(7661.53, -347.018, 601.133),
+            start = 60
+        }
+    }
+
+    self.fish.cine_data = {
+        timeline = {
+            [0] = {
+                path = {Vector3(-43.4067, -9529.26, -270.722),Rotation(10.9498, -80, 4.26887e-007)},
+                easing = "easeOutQuad",
+                fov = 70,
+                hide_units = {
+                    400018
+                },
+                units = {
+                    ["boat"] = {
+                        id = "units/pd2_dlc_holly/river/vehicles/anim_vehicle_rubber_boat/anim_vehicle_rubber_boat",
+                        position = Vector3(-11, -8509, -915.705),
+                        rotation = Rotation(-0, -0, -0)
+                    }
+                }
+            },
+            [100] = {
+                path = {Vector3(414.457, -5497.44, -240.93),Rotation(7.44998, 24.65, -0)},
+                fov = 70
+            }
+        },
+        update = [[
+            local pos = Vector3(0,0,0)
+
+            mvector3.lerp(pos,
+                Vector3(-11, -8509, -915.705),
+                Vector3(-11, -5484, -915.705),
+                local_progress * 3)
+
+            self.mem.units["boat"]:set_position(pos)
+        ]],
+        length = 12,
+        __original = true,
+        hideblackbars = false,
+        hologram = {
+            size = 600,
+            rot = Rotation(270, 0, 0),
+            pos = Vector3(-532.077, -3719.64, 449.626),
+            start = 60
+        }
+    }
+
+    self.moon.cine_data = {
+        timeline = {
+            [0] = {
+                path = {Vector3(497.348, -3578.87, 2048.61),Rotation(9.04897, -40.1021, -0)},
+                easing = "easeOutQuad",
+                fov = 60
+            },
+            [100] = {
+                path = {Vector3(155.122, -1430.03, 216.177),Rotation(11.849, -5.10219, 1.06722e-007)},
+                fov = 60
+            }
+        },
+        length = 23,
+        __original = true,
+        hideblackbars = false,
+        hologram = {
+            size = 400,
+            align = "billboard_x",
+            pos = Vector3(232.645, -1204.963, 223.795),
+            start = 70
+        }
+    }
+
+    self.run.cine_data = {
+        timeline = {
+            [0] = {
+                path = {Vector3(-9944.73, -9316.95, 1843.32),Rotation(-14.9986, -19.4503, -0)},
+                easing = "easeOutQuad",
+                fov = 60
+            },
+            [100] = {
+                path = {Vector3(-4677.18, -9453.48, 2211.45),Rotation(-128.4, 18.3499, 4.26887e-007)},
+                fov = 60
+            }
+        },
+        length = 24,
+        __original = true,
+        hideblackbars = false,
+        hologram = {
+            size = 500,
+            align = "billboard_x",
+            pos = Vector3(-3742.26, -10886.5, 2591.34),
+            start = 70
         }
     }
 

@@ -1,3 +1,6 @@
+if Network:is_client() then
+	return
+end
 local master_IntimitateInteractionExt_interact_blocked = IntimitateInteractionExt._interact_blocked
 local master_CarryInteractionExt_interact_blocked = CarryInteractionExt._interact_blocked
 local master_CarryInteractionExt_can_select = CarryInteractionExt.can_select

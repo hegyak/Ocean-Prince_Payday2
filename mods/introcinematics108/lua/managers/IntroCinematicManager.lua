@@ -676,32 +676,32 @@ if RequiredScript:lower() == "lib/setups/setup" then
     VisualOverhaulCore.managers.introcinematics = VisualOverhaulCore.managers.introcinematics or IntroCinematicManager:new()
 elseif RequiredScript:lower() == "lib/states/ingamewaitingforplayers" then
     Hooks:PostHook(IngameWaitingForPlayersState, "sync_start", "F_"..Idstring("PostHook:sync_start:IntroCinematicManager"):key(), function(self)          
-        if VisualOverhaulCore.managers.introcinematics then
+        if VisualOverhaulCore.managers.introcinematics and  VisualOverhaulCore.managers.introcinematics.play and managers.network:session() and managers.network:session():is_host() then
             VisualOverhaulCore.managers.introcinematics:play(self,managers.job:current_level_id())
         end
     end)
     
     Hooks:PostHook(IngameWaitingForPlayersState, "at_exit", "F_"..Idstring("PostHook:at_exit:IntroCinematicManager"):key(), function(self)   
-        if VisualOverhaulCore.managers.introcinematics then
+        if VisualOverhaulCore.managers.introcinematics and VisualOverhaulCore.managers.introcinematics.on_end and managers.network:session() and managers.network:session():is_host() then
             VisualOverhaulCore.managers.introcinematics:on_end()
         end
     end)
 
     Hooks:PostHook(IngameWaitingForPlayersState, "_start_delay", "F_"..Idstring("PostHook:_start_delay:IntroCinematicManager"):key(), function(self)   
-        if VisualOverhaulCore.managers.introcinematics then
+        if VisualOverhaulCore.managers.introcinematics and VisualOverhaulCore.managers.introcinematics.delay_hook and managers.network:session() and managers.network:session():is_host() then
             VisualOverhaulCore.managers.introcinematics:delay_hook()
         end
     end)
 
 elseif RequiredScript:lower() == "lib/managers/hud/hudmissionbriefing" then
     Hooks:PostHook(MissionBriefingGui, "init", "F_"..Idstring("PostHook:init:HideDefaultBlackScreen"):key(), function(self)
-        if VisualOverhaulCore.managers.introcinematics then
+        if VisualOverhaulCore.managers.introcinematics and VisualOverhaulCore.managers.introcinematics.connect_mission_briefingui and managers.network:session() and managers.network:session():is_host() then
             VisualOverhaulCore.managers.introcinematics:connect_mission_briefingui(self._safe_workspace,self._full_workspace)
         end
     end)
 elseif RequiredScript:lower() == "lib/managers/voicebriefingmanager" then
     Hooks:PostHook(VoiceBriefingManager, "_sound_callback", "F_"..Idstring("PostHook:_sound_callback:VoiceBriefingManager"):key(), function(self,instance, sound_source, event_type, cookie, label, identifier, position)
-        if VisualOverhaulCore.managers.introcinematics then
+        if VisualOverhaulCore.managers.introcinematics and VisualOverhaulCore.managers.introcinematics.connect_mission_dialog_meta_data and managers.network:session() and managers.network:session():is_host() then
             VisualOverhaulCore.managers.introcinematics:connect_mission_dialog_meta_data({
                 instance = instance,
                 sound_source = sound_source,
@@ -715,25 +715,25 @@ elseif RequiredScript:lower() == "lib/managers/voicebriefingmanager" then
     end)
 elseif RequiredScript:lower() == "lib/managers/hud/hudblackscreen" then
     Hooks:PostHook(HUDBlackScreen, "set_job_data", "F_"..Idstring("PostHook:set_job_data:HideDefaultBlackScreen"):key(), function(self)
-        
-        local data = get_level_data(managers.job:current_level_id())
-        if data then
-            if self._blackscreen_panel:child("job_panel") then
-                self._blackscreen_panel:child("job_panel"):set_visible(false)
-            elseif self._blackscreen_panel:child("custom_job_panel") then -- Void UI fix
-                self._blackscreen_panel:child("custom_job_panel"):set_visible(false)
+        if managers.network:session() and managers.network:session():is_host() then
+            local data = get_level_data(managers.job:current_level_id())
+            if data then
+                if self._blackscreen_panel:child("job_panel") then
+                    self._blackscreen_panel:child("job_panel"):set_visible(false)
+                elseif self._blackscreen_panel:child("custom_job_panel") then -- Void UI fix
+                    self._blackscreen_panel:child("custom_job_panel"):set_visible(false)
+                end
+            else
+                if self._blackscreen_panel:child("job_panel") then
+                    self._blackscreen_panel:child("job_panel"):set_visible(true)
+                elseif self._blackscreen_panel:child("custom_job_panel") then -- Void UI fix
+                    self._blackscreen_panel:child("custom_job_panel"):set_visible(true)
+                end
             end
-        else
-            if self._blackscreen_panel:child("job_panel") then
-                self._blackscreen_panel:child("job_panel"):set_visible(true)
-            elseif self._blackscreen_panel:child("custom_job_panel") then -- Void UI fix
-                self._blackscreen_panel:child("custom_job_panel"):set_visible(true)
+
+            if self._blackscreen_panel:child("skip_text") and self._blackscreen_panel:child("custom_job_panel") then -- Void UI fix
+                self._blackscreen_panel:child("skip_text"):set_center(self._blackscreen_panel:w() / 2, self._blackscreen_panel:h() / 1.05)
             end
         end
-
-        if self._blackscreen_panel:child("skip_text") and self._blackscreen_panel:child("custom_job_panel") then -- Void UI fix
-            self._blackscreen_panel:child("skip_text"):set_center(self._blackscreen_panel:w() / 2, self._blackscreen_panel:h() / 1.05)
-        end
-
     end)
 end
