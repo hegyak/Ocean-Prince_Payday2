@@ -1,0 +1,17 @@
+{
+	"name": "Detailed Achievements",
+	"description": "Shows tweakdata information in the achievements menu.",
+	"author": "andole",
+	"version": "1.0",
+	"blt_version" : 2.0,
+	"priority" : 100,
+	"color" : "0 0.6 0.286",
+	"contact": "\n http://steamcommunity.com/id/andole/",
+
+	"hooks": [
+		{
+			"hook_id": "lib/managers/menu/achievementdetailgui",
+			"script_path": "achievementdetailgui.lua"
+		}
+	]
+}

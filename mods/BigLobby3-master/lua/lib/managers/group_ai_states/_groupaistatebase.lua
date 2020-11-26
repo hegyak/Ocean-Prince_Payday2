@@ -16,16 +16,14 @@ function GroupAIStateBase:on_criminal_team_AI_enabled_state_changed()
 end
 
 Hooks:PostHook( GroupAIStateBase , "whisper_mode" , "GroupAIStateBasePostWhisperMode" , function( self )
-	for _, ai in pairs(self:all_AI_criminals()) do
-		if self._whisper_mode == true then
+	for _, ai in pairs(managers.groupai:state():all_AI_criminals()) do
+		if self._whisper_mode == true and BigLobbyGlobals.auto_stop_all_bots_settings then
 			ai.unit:movement():play_redirect("crouch")
 			ai.unit:movement():action_request({
 				sync = true,
 				body_part = 1,
 				type = "idle"
 			})
-		else
-			ai.unit:movement():set_should_stay(false)
 		end
 	end
 end )
