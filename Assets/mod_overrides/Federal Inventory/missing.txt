@@ -7,15 +7,5 @@ Throwable:	http://fbi.overkillsoftware.com/img/weapons/thrown/full/<thowable_id>
 Equipment:	http://fbi.overkillsoftware.com/img/weapons/equipment/full/<equipment_id>.png
 
 DLC		TYPE		NAME
-trd		style		jumpsuit 
-					clown 
-					jail_pd2_clan
-					miami 
-					peacoat 
-					sneak_suit 
-					tux
-					winter_suit 
-xmn		style		poolrepair
-bex 	style 		mariachi
-		
-					
+inf     style 		t800
+anv		style 		continentale
